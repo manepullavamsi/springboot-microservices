@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
     <name>spring-boot-microservices-course</name>
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
     </properties>
