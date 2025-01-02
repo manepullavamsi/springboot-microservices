@@ -1,6 +1,6 @@
 package com.ortech.bookstore.order.order_service.service;
 
-import static com.ortech.bookstore.order.order_service.domain.OrderMapper.fromJsonPayload;
+import static com.ortech.bookstore.order.order_service.utlity.OrderMapper.fromJsonPayload;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
