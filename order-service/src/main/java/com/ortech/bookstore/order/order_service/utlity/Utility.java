@@ -4,5 +4,5 @@ import java.util.List;
 
 public class Utility {
 
-    public static final List<String> ValidCountryList=List.of("INDIA","USA","GERMANY","UK");
+    public static final List<String> ValidCountryList = List.of("INDIA", "USA", "GERMANY", "UK");
 }

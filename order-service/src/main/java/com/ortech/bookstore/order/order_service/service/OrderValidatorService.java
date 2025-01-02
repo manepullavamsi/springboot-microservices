@@ -12,15 +12,15 @@ public class OrderValidatorService {
 
     private final ProductServiceClient productServiceClient;
 
-    public void validateOrder(CreateOrderRequest request)
-    {
-     for(OrderItem item: request.items())
-     {
-        var product= productServiceClient.getProductByCode(item.code()).orElseThrow(()->new InValidItemException("InValid Item Code Doesn't Exist at Catalog Service for Item Code : "+item.code()));
-            if(product.price().compareTo(item.price())!=0)
-            {
-                throw new InValidItemException("InValid Item Price for Item Code : "+item.code());
+    public void validateOrder(CreateOrderRequest request) {
+        for (OrderItem item : request.items()) {
+            var product = productServiceClient
+                    .getProductByCode(item.code())
+                    .orElseThrow(() -> new InValidItemException(
+                            "InValid Item Code Doesn't Exist at Catalog Service for Item Code : " + item.code()));
+            if (product.price().compareTo(item.price()) != 0) {
+                throw new InValidItemException("InValid Item Price for Item Code : " + item.code());
             }
-     }
+        }
     }
 }

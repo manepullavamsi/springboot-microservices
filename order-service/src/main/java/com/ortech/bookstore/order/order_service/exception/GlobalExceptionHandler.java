@@ -15,16 +15,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InValidItemException.class)
-    public ProblemDetail handleInValidItemException(InValidItemException inValidItemException)
-    {
-        ProblemDetail problemDetail=ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,inValidItemException.getLocalizedMessage());
+    public ProblemDetail handleInValidItemException(InValidItemException inValidItemException) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, inValidItemException.getLocalizedMessage());
         problemDetail.setType(URI.create("https://api.sivalabs-bookstore.com/errors/not-found"));
         problemDetail.setTitle("InValid Order Details");
         problemDetail.setProperty("Time Stamp", Instant.now());
         problemDetail.setProperty("service", "order-service");
         problemDetail.setProperty("error_category", "Medium");
         return problemDetail;
-
     }
 
     @ExceptionHandler(OrderNotFoundException.class)
@@ -46,7 +45,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errorMessages.add(errorMessage);
         });
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage() );
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
         problemDetail.setType(URI.create("https://api.sivalabs-bookstore.com/errors/bad-data"));
         problemDetail.setTitle("Invalid request Body");
         problemDetail.setProperty("errors", errorMessages);
@@ -55,9 +55,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         problemDetail.setProperty("timestamp", Instant.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problemDetail);
     }
+
     @ExceptionHandler(Exception.class)
     public ProblemDetail handleUnknownException(Exception ex) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
         problemDetail.setType(URI.create("https://api.sivalabs-bookstore.com/errors/internal-server-error"));
         problemDetail.setTitle("Internal Server Error");
         problemDetail.setProperty("Time Stamp", Instant.now());

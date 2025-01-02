@@ -1,14 +1,12 @@
 package com.ortech.bookstore.order.order_service.jobs;
 
-import com.ortech.bookstore.order.order_service.config.ApplicationProperties;
-import com.ortech.bookstore.order.order_service.repository.OrderEventRepository;
 import com.ortech.bookstore.order.order_service.service.OrderEventService;
+import java.time.Instant;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.time.Instant;
 
 @Component
 @RequiredArgsConstructor
@@ -17,10 +15,9 @@ public class EventPublisher {
 
     private final OrderEventService orderEventService;
 
-
     @Scheduled(cron = "${orders.publish-order-events-job-cron}")
-    public void scheduledPublisher()
-    {
+    @SchedulerLock(name = "EventPublisher")
+    public void scheduledPublisher() {
         log.info("Publishing Order Events at {}", Instant.now());
         orderEventService.publishEvent();
     }

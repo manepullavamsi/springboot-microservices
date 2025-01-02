@@ -27,7 +27,8 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    CreateOrderResponse createOrder(@RequestBody @Valid CreateOrderRequest orderRequest) throws JsonProcessingException {
+    CreateOrderResponse createOrder(@RequestBody @Valid CreateOrderRequest orderRequest)
+            throws JsonProcessingException {
         return orderService.createOrder(securityService.getLoginUserName(), orderRequest);
     }
 

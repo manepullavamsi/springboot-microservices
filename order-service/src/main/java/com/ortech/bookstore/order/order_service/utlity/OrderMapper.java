@@ -1,19 +1,18 @@
-package com.ortech.bookstore.order.order_service.domain;
+package com.ortech.bookstore.order.order_service.utlity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.UtilityClass;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
+import com.ortech.bookstore.order.order_service.domain.*;
+import lombok.experimental.UtilityClass;
+
 @UtilityClass
 public class OrderMapper {
-
 
     public static OrderEntity createOrderRequestMapper(CreateOrderRequest request) {
         OrderEntity orderEntity = new OrderEntity();
@@ -36,19 +35,24 @@ public class OrderMapper {
     }
 
     public static OrderEvent buildOrderEvent(OrderEntity orderEntity, OrderEventType orderEventType) {
-        return new OrderEvent(UUID.randomUUID().toString(), orderEntity.getOrderNumber(), orderEventType,
-                getOrderItems(orderEntity.getOrderItemEntities()), orderEntity.getCustomerDetails(),
-                orderEntity.getDelivery(), LocalDateTime.now());
+        return new OrderEvent(
+                UUID.randomUUID().toString(),
+                orderEntity.getOrderNumber(),
+                orderEventType,
+                getOrderItems(orderEntity.getOrderItemEntities()),
+                orderEntity.getCustomerDetails(),
+                orderEntity.getDelivery(),
+                LocalDateTime.now());
     }
 
-
     public static Set<OrderItem> getOrderItems(Set<OrderItemEntity> orderItemEntities) {
-        return orderItemEntities.stream().map(i -> new OrderItem(i.getCode(), i.getName(), i.getPrice(), i.getQuantity()))
+        return orderItemEntities.stream()
+                .map(i -> new OrderItem(i.getCode(), i.getName(), i.getPrice(), i.getQuantity()))
                 .collect(Collectors.toSet());
     }
 
     public static <T> T fromJsonPayload(String payload, Class<T> type) {
-       ObjectMapper objectMapper=new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         try {
             return objectMapper.readValue(payload, type);

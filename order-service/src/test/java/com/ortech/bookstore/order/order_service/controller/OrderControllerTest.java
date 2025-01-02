@@ -1,16 +1,14 @@
 package com.ortech.bookstore.order.order_service.controller;
 
-import static com.ortech.bookstore.order.order_service.testdata.TestDataFactory.createValidOrderRequest;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 import com.ortech.bookstore.order.order_service.AbstractIT;
 import io.restassured.http.ContentType;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-
-import java.math.BigDecimal;
 
 class OrderControllerTest extends AbstractIT {
     @Nested
@@ -18,7 +16,7 @@ class OrderControllerTest extends AbstractIT {
         @Test
         void testCreateOrderSuccessful() {
 
-            mockGetProductCode("P10","Cocunut",new BigDecimal(10));
+            mockGetProductCode("P10", "Cocunut", new BigDecimal(10));
             var payload =
                     """
                       {

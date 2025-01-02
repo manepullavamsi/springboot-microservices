@@ -21,8 +21,11 @@ public class ProductServiceClient {
     public Optional<Product> getProductByCode(String code) {
         log.info("getProductByCode for code : {}", code);
 
-        var product =
-                catalogRestClient.get().uri("/api/products/{code}" , code).retrieve().body(Product.class);
+        var product = catalogRestClient
+                .get()
+                .uri("/api/products/{code}", code)
+                .retrieve()
+                .body(Product.class);
         return Optional.ofNullable(product);
     }
 
