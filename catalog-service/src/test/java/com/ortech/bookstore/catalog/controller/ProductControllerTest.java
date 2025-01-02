@@ -42,8 +42,8 @@ public class ProductControllerTest {
     void testGetByCode() {
         given().contentType(ContentType.JSON)
                 .when()
-                .param("code", "P100")
-                .get("/api/products")
+                .pathParam("code", "P100")
+                .get("api/products/{code}")
                 .then()
                 .statusCode(200)
                 .body("code", equalTo("P100"));
@@ -53,8 +53,8 @@ public class ProductControllerTest {
     void testGetByCodeException() {
         given().contentType(ContentType.JSON)
                 .when()
-                .param("code", "P1001")
-                .get("/api/products")
+                .pathParam("code", "P1001")
+                .get("api/products/{code}")
                 .then()
                 .statusCode(404)
                 .body("service", equalTo("catalog-service"));

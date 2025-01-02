@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.ortech.bookstore.order.order_service.utlity.OrderMapper.fromJsonPayload;
+import static com.ortech.bookstore.order.order_service.domain.OrderMapper.fromJsonPayload;
 
 @Service
 @RequiredArgsConstructor

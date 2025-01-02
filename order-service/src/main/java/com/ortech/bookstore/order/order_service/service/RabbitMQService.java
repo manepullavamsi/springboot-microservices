@@ -1,6 +1,8 @@
 package com.ortech.bookstore.order.order_service.service;
 
 import com.ortech.bookstore.order.order_service.domain.MyPayload;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Service;
 
 //@Service
 public class RabbitMQService {
@@ -15,8 +17,8 @@ public class RabbitMQService {
         System.out.println("My New Order from 2 : " + myPayload.content());
     }
 
-//    @RabbitListener(queues = "${orders.delivered-orders-queue}")
-    public void deliveryOrdersListener(MyPayload myPayload) {
-        System.out.println("My Delivered Ordered : " + myPayload.content());
+//    @RabbitListener(queues = "${orders.cancelled-orders-queue}")
+    public void deliveryOrdersListener(Object myPayload) {
+        System.out.println("My Cancelled Ordered : ");
     }
 }

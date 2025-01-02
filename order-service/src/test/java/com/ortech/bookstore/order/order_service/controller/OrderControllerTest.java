@@ -18,15 +18,15 @@ class OrderControllerTest extends AbstractIT {
         @Test
         void testCreateOrderSuccessful() {
 
-            mockGetProductCode("P10","Product1",new BigDecimal(10));
+            mockGetProductCode("P10","Cocunut",new BigDecimal(10));
             var payload =
                     """
                       {
                       "items": [
                         {
-                          "code": "SVC",
+                          "code": "P10",
                           "name": "Cocunut",
-                          "price": 123,
+                          "price": 10,
                           "quantity": 1
                         }
                       ],
@@ -47,7 +47,7 @@ class OrderControllerTest extends AbstractIT {
                                     """;
 
             given().contentType(ContentType.JSON)
-                    .body(createValidOrderRequest())
+                    .body(payload)
                     .when()
                     .post("/api/orders")
                     .then()

@@ -4,14 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ortech.bookstore.order.order_service.domain.*;
 import com.ortech.bookstore.order.order_service.repository.OrderRepository;
 
-import com.ortech.bookstore.order.order_service.utlity.OrderMapper;
+import com.ortech.bookstore.order.order_service.domain.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.ortech.bookstore.order.order_service.utlity.OrderMapper.buildOrderEvent;
+import static com.ortech.bookstore.order.order_service.domain.OrderMapper.buildOrderEvent;
 import static com.ortech.bookstore.order.order_service.utlity.Utility.ValidCountryList;
 
 @Service
@@ -40,7 +40,7 @@ public class OrderService {
     public void processOrder(){
        List<OrderEntity> orderEntityList= orderRepository.findByStatus(OrderStatus.NEW);
         orderEntityList.forEach(orderEntity -> {
-          if( ValidCountryList.contains(orderEntity.getDelivery().addressCountry()))
+          if( ValidCountryList.contains(orderEntity.getDelivery().addressCountry().toUpperCase()))
           {
               orderEntity.setStatus(OrderStatus.DELIVERED);
               orderRepository.save(orderEntity);

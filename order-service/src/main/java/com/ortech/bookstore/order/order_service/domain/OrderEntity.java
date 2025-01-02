@@ -21,7 +21,7 @@ public class OrderEntity {
     @Column(name = "username")
     private String username;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders",fetch = FetchType.EAGER)
     private Set<OrderItemEntity> orderItemEntities;
 
     @Embedded

@@ -44,6 +44,19 @@ public class RabbitMqConfig {
     }
 
     @Bean
+    Queue cancelledOrderdQueue() {
+        return QueueBuilder.durable(applicationProperties.cancelledOrdersQueue())
+                .build();
+    }
+
+    @Bean
+    Binding cancelledOrderQueueBinding() {
+        return BindingBuilder.bind(cancelledOrderdQueue())
+                .to(exchange())
+                .with(applicationProperties.cancelledOrdersQueue());
+    }
+
+    @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, ObjectMapper objectMapper) {
         final var rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jackson2JsonMessageConverter(objectMapper));
