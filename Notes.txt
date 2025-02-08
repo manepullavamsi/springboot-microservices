@@ -1,1 +1,9 @@
+Session : 1
+  Introduction to Microservices Arichteture:
+      >Microservices Arichteture Style where large application can composed of small services that provide specfic business capablites that can deployed and managed Indepedently.
+      >When we creating microservices we need to divide our services based on Business Capablities not by Technical Capablites and we should be able to deploy ,run and manage our services independently. 
 
+  Monolithics VS Microservices -Pros & Cons:
+Monolithic: 
+  The Challeanges with Microservices Arichteture
+  Project Development Environment Preparation
