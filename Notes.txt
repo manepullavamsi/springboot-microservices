@@ -21,5 +21,5 @@ CORN'S: Diffcult to build & Mange Distrubed Applications
         Complex deploymement Process
         Performance Issues
 While Making Tech Decesions In terms of Techstack We need to think in all different perceptives Wether We can run the stack we choose in production do we have skilled person on that techstack we have any issues and If it is new techstack wether team adapt quickly and can devlvery with the business Deadline
-  The Challeanges with Microservices Arichteture
-  Project Development Environment Preparation
+  Project Development Environment Preparation:
+      As we are using Microservice Archteture we can use Spring cloud Config where we can store our config in repository or database or consul and where we can maintain centralized configuration for all applications. But in our series we would be using application propeties file or we would be overriding using env variables but when we are deploying kubernetes ENV we can see how we can do with config maps and config secrets.
