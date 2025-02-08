@@ -5,5 +5,12 @@ Session : 1
 
   Monolithics VS Microservices -Pros & Cons:
 Monolithic: 
+    Where a large Application would be deployed as a single Service and It will connect to Database It would be relatively big application but where intercommunicating of features would be essay as we had devloped in a single application and debuging would be essay and Essay deployment and Eassy for testing as we can avoid mutiple mocking as we have limited external services.
+Con's:
+  Diffcult to scale sub systems(Modules)
+  Diffcult to adpot new Technologies
+  Higher chance to become big ball of Mud as over the time application evlove with multiple features.
+MicroServices:
+  In order to overcome issues with Monolithic Microservice Arichteture eveloved but It doesn't mean microservices is go to solution we need to analysis and need to decide which would be better according to our requirement. 
   The Challeanges with Microservices Arichteture
   Project Development Environment Preparation
