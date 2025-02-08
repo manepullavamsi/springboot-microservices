@@ -23,3 +23,15 @@ CORN'S: Diffcult to build & Mange Distrubed Applications
 While Making Tech Decesions In terms of Techstack We need to think in all different perceptives Wether We can run the stack we choose in production do we have skilled person on that techstack we have any issues and If it is new techstack wether team adapt quickly and can devlvery with the business Deadline
   Project Development Environment Preparation:
       As we are using Microservice Archteture we can use Spring cloud Config where we can store our config in repository or database or consul and where we can maintain centralized configuration for all applications. But in our series we would be using application propeties file or we would be overriding using env variables but when we are deploying kubernetes ENV we can see how we can do with config maps and config secrets.
+Service Registry:
+    Spring cloud based application mutiple Service Registry services like Eureka,COnsul
+    We would be running mutiple instances of each service and when client make a call to service then This Service Registry(Eureka) comes into place and route the request to available instance of service.
+Generally the Services would be registy with Service Registry as a service with unique name and service registry look for instances which running with that name and when any particular call have been invoked to the service service registry routes request to the available instance. But in Kuberentes It might be not help ful as we have service concepts in kubernetes which act as loabbalancer and and each instance would be running as pod.
+
+Session:2
+
+Create Catalog-service working Skelton:
+
+Configure Code Formatting Swagger
+Setup Docker Compose for local Developemnt
+Setup Contionues Integration using Github Actions
