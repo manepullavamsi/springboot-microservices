@@ -31,6 +31,21 @@ Generally the Services would be registy with Service Registry as a service with 
 Session:2
 
 Create Catalog-service working Skelton:
+Here we would be doing setup of pom.xml with all the dependencies which are used by catalog service.
+
+SDK man Setup This we would be using when we want to manage multiple versions of java and maven by making auto.env true the moment when switch into specfic project it read.sdkman file and configures respective versions.
+
+Maven Wrapper:
+    We would be using maven wrapper when anyone don't want to setup maven by default in system and want to run maven commands
+
+we would be using flyway migration for db scripts we would be using for maintenaning versions of scripts with V1,V2 to track the versions of scripts and it works well with ci/cd jobs while running on mutiple environment.
+
+Testcontainers: It will be used mainly for integration testing and Local Development when we add this dependency there would test application class would be generated with springboot application Test class and when we run the test application class instead of main application class or would be started by starting depend dependency like database the version which we had mention in the test application with the help of this if we have our fly way migration scripts then it would be easier test our application with dependening on external databases but in order to achive this we need to be running our docker so that test container runs the respective db when we start our application.
+
+we did have actuator in order to monitor health and other endpoints of application by default to would be exposing only three endpoints in order to access all the endpoints exposed by actuator we need to add exclusion property in properties file.
+mangement. endpoints. web.explosure.include=*
+
+
 
 Configure Code Formatting Swagger
 Setup Docker Compose for local Developemnt
