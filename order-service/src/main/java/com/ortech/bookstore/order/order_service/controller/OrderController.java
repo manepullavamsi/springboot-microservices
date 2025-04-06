@@ -37,4 +37,9 @@ public class OrderController {
         rabbitTemplate.convertAndSend(
                 applicationProperties.orderEventsExchange(), myMessage.routingKey(), myMessage.payload());
     }
+    @GetMapping
+    List<OrderSummary> getOrders()
+    {
+        return orderService.createOrder(securityService.getLoginUserName());
+    }
 }

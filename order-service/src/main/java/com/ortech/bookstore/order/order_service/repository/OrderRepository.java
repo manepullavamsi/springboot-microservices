@@ -9,4 +9,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
     List<OrderEntity> findByStatus(OrderStatus string);
+
+    @Query("""
+    
+    select com.ortech.bookstore.order.order_service.domain.OrderSummary(o.orderNumber,o.status)
+    
+     from OrderEntity o where o.userName=:username;
+
+    """)
+    List<OrderSummary> findByUserName(String username);
 }

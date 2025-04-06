@@ -35,6 +35,11 @@ public class OrderService {
         return new CreateOrderResponse(orderEntity.getOrderNumber());
     }
 
+    public List<OrderSummary> getOrders(String userName)
+    {
+       return orderRepository.findByUserName(userName);
+    }
+
     public void processOrder() {
         List<OrderEntity> orderEntityList = orderRepository.findByStatus(OrderStatus.NEW);
         orderEntityList.forEach(orderEntity -> {
