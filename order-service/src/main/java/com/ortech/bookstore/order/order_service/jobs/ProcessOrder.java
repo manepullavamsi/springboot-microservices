@@ -2,6 +2,7 @@ package com.ortech.bookstore.order.order_service.jobs;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ortech.bookstore.order.order_service.service.OrderService;
+import net.javacrumbs.shedlock.core.LockAssert;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;

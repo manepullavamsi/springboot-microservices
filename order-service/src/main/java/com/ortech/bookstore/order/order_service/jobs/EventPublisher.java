@@ -3,6 +3,7 @@ package com.ortech.bookstore.order.order_service.jobs;
 import com.ortech.bookstore.order.order_service.service.OrderEventService;
 import java.time.Instant;
 import lombok.RequiredArgsConstructor;
+import net.javacrumbs.shedlock.core.LockAssert;
 import lombok.extern.slf4j.Slf4j;
 import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
 import org.springframework.scheduling.annotation.Scheduled;
