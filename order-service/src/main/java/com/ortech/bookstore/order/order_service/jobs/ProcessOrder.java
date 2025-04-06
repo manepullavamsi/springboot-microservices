@@ -18,6 +18,7 @@ public class ProcessOrder {
     @Scheduled(cron = "${orders.process-order-events-job-cron}")
     @SchedulerLock(name = "OrderProcessing")
     public void processOrder() throws JsonProcessingException {
+         LockAssert.assertLocked();
         log.info("Process Order Started ");
         orderService.processOrder();
     }

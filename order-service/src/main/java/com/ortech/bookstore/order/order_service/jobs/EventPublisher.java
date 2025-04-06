@@ -18,6 +18,7 @@ public class EventPublisher {
     @Scheduled(cron = "${orders.publish-order-events-job-cron}")
     @SchedulerLock(name = "EventPublisher")
     public void scheduledPublisher() {
+        LockAssert.assertLocked();
         log.info("Publishing Order Events at {}", Instant.now());
         orderEventService.publishEvent();
     }
