@@ -7,6 +7,7 @@ import com.ortech.bookstore.order.order_service.domain.CreateOrderResponse;
 import com.ortech.bookstore.order.order_service.domain.MyMessage;
 import com.ortech.bookstore.order.order_service.service.OrderService;
 import com.ortech.bookstore.order.order_service.service.SecurityService;
+package com.ortech.bookstore.order.order_service.domain.OrderSummary;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

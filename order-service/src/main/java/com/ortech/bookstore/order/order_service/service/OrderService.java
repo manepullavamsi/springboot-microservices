@@ -6,6 +6,7 @@ import static com.ortech.bookstore.order.order_service.utlity.Utility.ValidCount
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ortech.bookstore.order.order_service.domain.*;
 import com.ortech.bookstore.order.order_service.utlity.OrderMapper;
+package com.ortech.bookstore.order.order_service.domain.OrderSummary;
 import com.ortech.bookstore.order.order_service.repository.OrderRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
